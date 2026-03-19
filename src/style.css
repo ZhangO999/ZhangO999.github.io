@@ -90,6 +90,16 @@ hr {
   margin: 2rem 0;
 }
 
+.wip {
+  font-size: 0.85rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.4em 0.75em;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+
 code {
   font-family: var(--mono);
   font-size: 0.83em;
