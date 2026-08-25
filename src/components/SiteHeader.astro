@@ -1,10 +1,10 @@
 ---
-import Monogram from './Monogram.astro';
+import HeaderMascot from './HeaderMascot.astro';
 
 const path = Astro.url.pathname;
 const navItems = [
   { href: '/', label: 'Home' },
-  { href: '/work/', label: 'Work' },
+  { href: '/work/', label: 'Projects' },
   { href: '/notes/', label: 'Notes' },
   { href: '/about/', label: 'About' },
 ];
@@ -14,10 +14,12 @@ const isActive = (href: string) =>
 ---
 
 <header class="site-header">
-  <a class="brand" href="/" aria-label="Oliver Zhang, home">
-    <Monogram />
-    <span>Oliver Zhang</span>
-  </a>
+  <div class="brand-cluster">
+    <HeaderMascot />
+    <a class="brand" href="/" aria-label="Oliver Zhang, home">
+      <span class="brand-label">oliverzhang</span>
+    </a>
+  </div>
 
   <nav aria-label="Primary navigation">
     <ul>

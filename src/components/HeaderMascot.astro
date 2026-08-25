@@ -1,0 +1,79 @@
+<button class="header-mascot" type="button" aria-label="Poke the cat">
+  <img class="mascot-idle" src="/cat-idle.webp" alt="" width="44" height="50" />
+  <img class="mascot-bop" src="/cat-bop.webp" alt="" width="52" height="48" />
+</button>
+
+<script>
+  const mascot = document.querySelector<HTMLButtonElement>('.header-mascot');
+  const label = document.querySelector<HTMLElement>('.brand-label');
+  let resetTimer: number | undefined;
+
+  mascot?.addEventListener('click', () => {
+    window.clearTimeout(resetTimer);
+    mascot.classList.remove('is-bopping');
+    label?.classList.remove('is-bopped');
+    void mascot.offsetWidth;
+    mascot.classList.add('is-bopping');
+    label?.classList.add('is-bopped');
+
+    resetTimer = window.setTimeout(() => {
+      mascot.classList.remove('is-bopping');
+      label?.classList.remove('is-bopped');
+    }, 520);
+  });
+</script>
+
+<style>
+  .header-mascot {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    height: 3.15rem;
+    margin: -0.55rem 0;
+    padding: 0;
+    position: relative;
+    width: 3.3rem;
+  }
+
+  img {
+    bottom: 0;
+    height: 3rem;
+    left: 50%;
+    object-fit: contain;
+    position: absolute;
+    transform: translateX(-50%);
+    transform-origin: 50% 100%;
+    transition: opacity 80ms linear;
+    width: auto;
+  }
+
+  .mascot-bop {
+    opacity: 0;
+  }
+
+  .header-mascot:hover .mascot-idle {
+    transform: translateX(-50%) rotate(-2deg);
+  }
+
+  .header-mascot.is-bopping .mascot-idle {
+    opacity: 0;
+  }
+
+  .header-mascot.is-bopping .mascot-bop {
+    animation: cat-swat 500ms ease-out both;
+    opacity: 1;
+  }
+
+  @keyframes cat-swat {
+    0% { transform: translateX(-50%) translateY(4px) rotate(5deg) scale(0.92); }
+    45% { transform: translateX(-43%) translateY(-2px) rotate(-7deg) scale(1.04); }
+    72% { transform: translateX(-37%) rotate(-3deg); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .header-mascot.is-bopping .mascot-bop {
+      animation: none;
+    }
+  }
+</style>

@@ -2,7 +2,6 @@
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import avatar from '../assets/oliver-cat.png';
-import Monogram from '../components/Monogram.astro';
 import SectionBreak from '../components/SectionBreak.astro';
 import ProjectRow from '../components/ProjectRow.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -15,20 +14,22 @@ const projects = (await getCollection('projects'))
 <BaseLayout>
   <section class="hero section-pad">
     <div class="hero-copy">
-      <p class="eyebrow">Hello, internet.</p>
-      <h1>I’m Oliver.</h1>
+      <p class="eyebrow">Oliver Zhang / University of Sydney</p>
+      <h1>Hi, I’m Oliver.</h1>
       <p class="hero-lede">
-        I’m a software engineer in training at the University of Sydney. I like
-        systems, useful tools, and making complicated things feel considered.
+        I’m a software engineering student interested in systems, databases,
+        developer tools, and the small decisions that make software easier to
+        understand.
       </p>
-      <div class="hero-actions">
-        <a class="button button-primary" href="/work/">See my work <span aria-hidden="true">→</span></a>
-        <a class="button button-quiet" href="mailto:ozha8307@uni.sydney.edu.au">Say hello</a>
-      </div>
+      <ul class="hero-links" aria-label="Key links">
+        <li><a href="/work/">projects</a></li>
+        <li><a href="/notes/">notes</a></li>
+        <li><a href="https://github.com/ZhangO999">github</a></li>
+        <li><a href="mailto:ozha8307@uni.sydney.edu.au">email</a></li>
+      </ul>
     </div>
 
     <div class="portrait-stage" aria-label="Oliver's illustrated cat avatar">
-      <span class="portrait-index" aria-hidden="true">01 / avatar</span>
       <Image
         class="portrait"
         src={avatar}
@@ -38,25 +39,16 @@ const projects = (await getCollection('projects'))
         loading="eager"
         fetchpriority="high"
       />
-      <div class="portrait-caption">
-        <span class="status-dot" aria-hidden="true"></span>
-        <span>properly online</span>
-      </div>
     </div>
   </section>
 
-  <aside class="status-strip" aria-label="Current status">
-    <span class="status-dot" aria-hidden="true"></span>
-    <p>Based in Sydney · currently reading <em>Designing Data-Intensive Applications</em></p>
-  </aside>
-
-  <SectionBreak label="selected work" />
+  <SectionBreak label="projects" />
 
   <section class="content-section" aria-labelledby="selected-work">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">A few things I’ve made</p>
-        <h2 id="selected-work">Selected work</h2>
+        <p class="eyebrow">Research, systems, and small experiments</p>
+        <h2 id="selected-work">Selected projects</h2>
       </div>
       <a class="text-link" href="/work/">All projects <span aria-hidden="true">→</span></a>
     </div>
@@ -64,37 +56,5 @@ const projects = (await getCollection('projects'))
     <div class="project-list">
       {projects.map(({ data }) => <ProjectRow {...data} />)}
     </div>
-  </section>
-
-  <section class="two-up section-gap" aria-label="More about Oliver">
-    <article class="paper-card">
-      <p class="card-kicker">Off the clock</p>
-      <h2>A small life outside the terminal.</h2>
-      <p>
-        I’m usually reading, tinkering with a half-finished idea, or finding a
-        reason to turn a small curiosity into a project.
-      </p>
-      <a class="text-link" href="/about/">More about me <span aria-hidden="true">→</span></a>
-    </article>
-
-    <article class="paper-card paper-card-blue">
-      <p class="card-kicker">The notebook</p>
-      <h2>What I’m learning along the way.</h2>
-      <p>
-        Reading notes, systems observations, and occasional write-ups live on a
-        deliberately small shelf.
-      </p>
-      <a class="text-link" href="/notes/">Open the notebook <span aria-hidden="true">→</span></a>
-    </article>
-  </section>
-
-  <section class="contact-block section-gap" aria-labelledby="contact-title">
-    <Monogram size="large" />
-    <div>
-      <p class="eyebrow">One last thing</p>
-      <h2 id="contact-title">Have an interesting problem?</h2>
-      <p>I’m always happy to compare notes, talk software, or hear about a project.</p>
-    </div>
-    <a class="button button-primary" href="mailto:ozha8307@uni.sydney.edu.au">Email me <span aria-hidden="true">→</span></a>
   </section>
 </BaseLayout>
