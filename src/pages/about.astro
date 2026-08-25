@@ -1,0 +1,69 @@
+---
+import { Image } from 'astro:assets';
+import avatar from '../assets/oliver-cat.png';
+import PetalDivider from '../components/PetalDivider.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About — Oliver Zhang"
+  description="About Oliver Zhang, a software engineer in training at the University of Sydney."
+>
+  <header class="about-hero section-pad">
+    <Image
+      class="about-avatar"
+      src={avatar}
+      alt="Illustrated white and grey cat wearing a top hat and bow tie"
+      width={180}
+      height={180}
+    />
+    <div class="page-intro page-intro-compact">
+      <p class="eyebrow">About</p>
+      <h1>Curious by default.</h1>
+      <p>
+        Hi, I’m Oliver—an aspiring software engineer studying at the University of
+        Sydney. I like clean code, fast systems, and the occasional Bash one-liner.
+      </p>
+    </div>
+  </header>
+
+  <PetalDivider />
+
+  <div class="about-grid content-section">
+    <section aria-labelledby="working-on">
+      <p class="eyebrow">What I care about</p>
+      <h2 id="working-on">Software with understandable edges.</h2>
+      <p>
+        I’m especially drawn to systems, databases, developer tools, and projects
+        where the implementation teaches me something about the problem itself.
+      </p>
+      <p>
+        My recent work has included benchmarking PostgreSQL isolation policies,
+        building concurrent software in C, and revisiting an old Unity game with a
+        few more years of engineering judgement.
+      </p>
+    </section>
+
+    <aside class="facts-card" aria-label="Quick facts">
+      <dl>
+        <div><dt>Based in</dt><dd>Sydney, Australia</dd></div>
+        <div><dt>Studying at</dt><dd>University of Sydney</dd></div>
+        <div><dt>Interested in</dt><dd>Systems, tools, databases</dd></div>
+        <div><dt>Reading</dt><dd>DDIA</dd></div>
+      </dl>
+    </aside>
+  </div>
+
+  <section class="site-note section-gap">
+    <p class="eyebrow">About this site</p>
+    <h2>Made to be quiet, quick, and a little peculiar.</h2>
+    <p>
+      The site is built with Astro, plain CSS, and no client-side JavaScript. The
+      cat is my GitHub profile illustration; the bow tie and botanical details are
+      small vector motifs derived from its palette.
+    </p>
+    <p>
+      The <a href="https://github.com/ZhangO999/ZhangO999.github.io">source</a> is public.
+    </p>
+  </section>
+</BaseLayout>

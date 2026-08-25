@@ -1,0 +1,27 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  year: number;
+  href: string;
+  tags: string[];
+}
+
+const { title, description, year, href, tags } = Astro.props;
+---
+
+<article class="project-row">
+  <a class="project-main" href={href} aria-label={`${title} on GitHub`}>
+    <div class="project-heading">
+      <h3>{title}</h3>
+      <span class="arrow" aria-hidden="true">↗</span>
+    </div>
+    <p>{description}</p>
+  </a>
+  <div class="project-meta">
+    <span>{year}</span>
+    <ul aria-label="Technologies">
+      {tags.map((tag) => <li>{tag}</li>)}
+    </ul>
+  </div>
+</article>

@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import PetalDivider from '../components/PetalDivider.astro';
+import ProjectRow from '../components/ProjectRow.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<BaseLayout
+  title="Work — Oliver Zhang"
+  description="Selected software, systems, research, and game projects by Oliver Zhang."
+>
+  <header class="page-intro section-pad">
+    <p class="eyebrow">Work</p>
+    <h1>Projects built to answer a question.</h1>
+    <p>
+      I learn best by making things. These projects range from database experiments
+      and POSIX systems to games and small simulations.
+    </p>
+  </header>
+
+  <PetalDivider />
+
+  <section class="content-section" aria-label="All projects">
+    <div class="project-list project-list-full">
+      {projects.map(({ data }) => <ProjectRow {...data} />)}
+    </div>
+    <p class="page-tail">
+      Smaller experiments and works in progress live on
+      <a href="https://github.com/ZhangO999">GitHub</a>.
+    </p>
+  </section>
+</BaseLayout>

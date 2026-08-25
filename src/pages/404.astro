@@ -1,0 +1,14 @@
+---
+import BowMark from '../components/BowMark.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found — Oliver Zhang" description="This page could not be found.">
+  <section class="not-found section-pad">
+    <BowMark size={52} />
+    <p class="eyebrow">404</p>
+    <h1>The cat appears to have misplaced this page.</h1>
+    <p>There is plenty of internet left. Let’s head back somewhere familiar.</p>
+    <a class="button button-primary" href="/">Return home <span aria-hidden="true">→</span></a>
+  </section>
+</BaseLayout>

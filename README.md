@@ -1,52 +1,33 @@
-# ozzh.github.io
+# Oliver Zhang — personal website
 
-Personal site at [ozzh.github.io](https://ozzh.github.io).
+The source for [zhango999.github.io](https://zhango999.github.io), built as a
+small static site with Astro, TypeScript, and plain CSS.
 
-Built with pure HTML, CSS, and JavaScript. A small bash script assembles
-pages from shared partials and outputs them to `public/`. GitHub Actions
-deploys `public/` to GitHub Pages on every push to `main`.
+## Local development
 
-## Structure
-
-```
-src/
-  _head.html        # shared page header (nav, <head>)
-  _foot.html        # shared page footer
-  style.css         # stylesheet
-  script.js         # active nav highlighting
-  pages/
-    index.html      # home page content
-    about.html      # about page content
-build.sh            # builds src/ → public/
-serve.sh            # build + local dev server
-.github/
-  workflows/
-    deploy.yml      # CI: build & deploy to GitHub Pages
-```
-
-## Usage
-
-**Build:**
 ```bash
-bash build.sh
+npm install
+npm run dev
 ```
 
-**Preview locally** (requires Python 3):
+The production build is generated in `dist/`:
+
 ```bash
-bash serve.sh
-# open http://localhost:8000
+npm run build
+npm run preview
 ```
 
-## Adding a new page
+## Updating content
 
-1. Create `src/pages/yourpage.html` — first line must be `<!-- title: Your Title -->`
-2. Add a nav link in `src/_head.html`
-3. Run `bash build.sh`
+Projects are individual Markdown files in `src/content/projects/`. Add a file,
+fill in its frontmatter, and it will automatically appear on the work page.
+Set `featured: true` to include it on the homepage.
+
+Page copy lives in `src/pages/`, shared components in `src/components/`, and the
+visual system in `src/styles/global.css`.
 
 ## Deployment
 
-Push to `main`. The GitHub Actions workflow runs `build.sh`, then deploys
-`public/` via the [GitHub Pages API](https://docs.github.com/en/pages).
-
-Make sure GitHub Pages is set to deploy from **GitHub Actions** in your
-repo settings: *Settings → Pages → Source → GitHub Actions*.
+Every push to `main` runs the production build and deploys `dist/` through
+GitHub Pages. In the repository settings, Pages should use **GitHub Actions** as
+its source.

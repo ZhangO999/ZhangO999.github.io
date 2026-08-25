@@ -1,0 +1,33 @@
+---
+import BowMark from './BowMark.astro';
+
+const path = Astro.url.pathname;
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/work/', label: 'Work' },
+  { href: '/notes/', label: 'Notes' },
+  { href: '/about/', label: 'About' },
+];
+
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path.startsWith(href);
+---
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Oliver Zhang, home">
+    <BowMark size={31} />
+    <span>Oliver Zhang</span>
+  </a>
+
+  <nav aria-label="Primary navigation">
+    <ul>
+      {navItems.map((item) => (
+        <li>
+          <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
