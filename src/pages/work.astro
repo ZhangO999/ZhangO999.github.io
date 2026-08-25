@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import PetalDivider from '../components/PetalDivider.astro';
+import SectionBreak from '../components/SectionBreak.astro';
 import ProjectRow from '../components/ProjectRow.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -22,7 +22,7 @@ const projects = (await getCollection('projects')).sort(
     </p>
   </header>
 
-  <PetalDivider />
+  <SectionBreak label="the projects" />
 
   <section class="content-section" aria-label="All projects">
     <div class="project-list project-list-full">

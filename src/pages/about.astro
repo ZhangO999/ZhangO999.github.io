@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import avatar from '../assets/oliver-cat.png';
-import PetalDivider from '../components/PetalDivider.astro';
+import SectionBreak from '../components/SectionBreak.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
@@ -27,7 +27,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </header>
 
-  <PetalDivider />
+  <SectionBreak label="a little more" />
 
   <div class="about-grid content-section">
     <section aria-labelledby="working-on">
@@ -59,11 +59,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <h2>Made to be quiet, quick, and a little peculiar.</h2>
     <p>
       The site is built with Astro, plain CSS, and no client-side JavaScript. The
-      cat is my GitHub profile illustration; the bow tie and botanical details are
-      small vector motifs derived from its palette.
+      cat is my GitHub profile illustration; the rest is deliberately restrained:
+      warm paper, muted colour, and small editorial details.
     </p>
     <p>
-      The <a href="https://github.com/ZhangO999/ZhangO999.github.io">source</a> is public.
+      The <a href="https://github.com/ZhangO999/ZhangO999.github.io">source</a> lives on GitHub.
     </p>
   </section>
 </BaseLayout>

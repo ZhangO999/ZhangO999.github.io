@@ -1,6 +1,6 @@
 ---
-import BowMark from '../components/BowMark.astro';
-import PetalDivider from '../components/PetalDivider.astro';
+import Monogram from '../components/Monogram.astro';
+import SectionBreak from '../components/SectionBreak.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
@@ -17,7 +17,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </p>
   </header>
 
-  <PetalDivider />
+  <SectionBreak label="on the shelf" />
 
   <section class="notes-grid content-section" aria-label="Notebook entries">
     <article class="reading-card">
@@ -35,7 +35,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </article>
 
     <article class="note-entry">
-      <div class="note-icon"><BowMark size={28} /></div>
+      <div class="note-icon"><Monogram /></div>
       <div>
         <p class="card-kicker">Research report · 2026</p>
         <h2>The retry tax</h2>

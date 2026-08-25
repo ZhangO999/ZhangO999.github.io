@@ -1,0 +1,51 @@
+---
+interface Props {
+  size?: 'small' | 'medium' | 'large';
+  label?: string;
+}
+
+const { size = 'medium', label } = Astro.props;
+---
+
+<span
+  class:list={['monogram', `monogram-${size}`]}
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+>oz</span>
+
+<style>
+  .monogram {
+    align-items: center;
+    background: var(--blue-light);
+    border: 1px solid var(--ink);
+    border-radius: 32% 44% 34% 42%;
+    color: var(--ink);
+    display: inline-flex;
+    flex: 0 0 auto;
+    font-family: var(--mono);
+    font-weight: 700;
+    justify-content: center;
+    letter-spacing: -0.08em;
+    line-height: 1;
+    transform: rotate(-3deg);
+  }
+
+  .monogram-small {
+    font-size: 0.58rem;
+    height: 1.45rem;
+    width: 1.45rem;
+  }
+
+  .monogram-medium {
+    font-size: 0.68rem;
+    height: 1.9rem;
+    width: 1.9rem;
+  }
+
+  .monogram-large {
+    font-size: 0.86rem;
+    height: 2.6rem;
+    width: 2.6rem;
+  }
+</style>
