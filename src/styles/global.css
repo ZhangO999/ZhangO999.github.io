@@ -1,17 +1,17 @@
 :root {
-  --paper: #f4f4f1;
-  --paper-deep: #e8e8e4;
-  --paper-light: #fbfbf9;
-  --ink: #242829;
-  --ink-soft: #5e6365;
-  --ink-muted: #85898a;
-  --blue: #687276;
-  --blue-dark: #424b4f;
-  --blue-light: #e2e5e4;
-  --sage: #747b76;
-  --sage-light: #e3e5e1;
-  --line: #d1d2ce;
-  --white: #fbfbf9;
+  --paper: #fafaf8;
+  --paper-deep: #f4f4f1;
+  --paper-light: #ffffff;
+  --ink: #111111;
+  --ink-soft: #505050;
+  --ink-muted: #777777;
+  --blue: #111111;
+  --blue-dark: #111111;
+  --blue-light: #ffffff;
+  --sage: #111111;
+  --sage-light: #ffffff;
+  --line: #d4d4d0;
+  --white: #ffffff;
   --display: "Avenir Next", Avenir, "Segoe UI", ui-sans-serif, sans-serif;
   --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
@@ -26,7 +26,7 @@
   --space-6: 2rem;
   --space-7: 3rem;
   --space-8: 4.5rem;
-  --shadow: 0 18px 45px rgb(40 50 56 / 9%);
+  --shadow: none;
 }
 
 *,
@@ -296,8 +296,8 @@ h3 {
 }
 
 .button-primary {
-  background: var(--blue-dark);
-  color: var(--white);
+  background: transparent;
+  color: var(--ink);
 }
 
 .button-quiet {
@@ -317,27 +317,19 @@ h3 {
 }
 
 .portrait-stage::before {
-  background: var(--paper-deep);
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  content: "";
-  height: min(88%, 19rem);
-  position: absolute;
-  width: min(88%, 19rem);
+  content: none;
 }
 
 .portrait {
-  filter: grayscale(1) contrast(0.96);
   height: auto;
   position: relative;
-  transition: filter 220ms ease, transform 220ms ease;
+  transition: transform 180ms ease;
   width: min(100%, 300px);
   z-index: 1;
 }
 
 .portrait-stage:hover .portrait {
-  filter: grayscale(0.35) contrast(0.96);
-  transform: rotate(1deg) translateY(-2px);
+  transform: rotate(0.7deg) translateY(-1px);
 }
 
 .section-heading {
@@ -427,7 +419,8 @@ h3 {
 }
 
 .project-meta li {
-  background: var(--blue-light);
+  background: transparent;
+  border: 1px solid var(--line);
   border-radius: 999px;
   padding: 0.12rem 0.5rem;
 }
@@ -439,7 +432,7 @@ h3 {
 }
 
 .paper-card {
-  background: var(--paper-light);
+  background: transparent;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -447,7 +440,7 @@ h3 {
 }
 
 .paper-card-blue {
-  background: var(--blue-light);
+  background: transparent;
 }
 
 .paper-card h2 {
@@ -482,9 +475,8 @@ h3 {
 }
 
 .footer-art {
-  filter: grayscale(1) contrast(0.9);
   height: auto;
-  opacity: 0.78;
+  opacity: 1;
   width: 100%;
 }
 
@@ -554,8 +546,8 @@ h3 {
 
 .reading-card {
   align-items: start;
-  background: var(--paper-light);
-  box-shadow: var(--shadow);
+  background: transparent;
+  box-shadow: none;
   display: grid;
   gap: var(--space-5);
   grid-template-columns: auto 1fr;
@@ -568,10 +560,10 @@ h3 {
 
 .book-spine {
   align-items: center;
-  background: var(--blue-dark);
+  background: transparent;
   border: 1px solid var(--ink);
-  box-shadow: inset 8px 0 rgb(40 50 56 / 18%);
-  color: var(--white);
+  box-shadow: none;
+  color: var(--ink);
   display: flex;
   height: 10.5rem;
   justify-content: center;
@@ -592,7 +584,7 @@ h3 {
 }
 
 .note-entry {
-  background: var(--sage-light);
+  background: transparent;
 }
 
 .note-icon {
@@ -607,11 +599,11 @@ h3 {
 }
 
 .about-avatar {
-  background: var(--blue-light);
-  border: 1px solid var(--line);
-  border-radius: 1.25rem;
-  box-shadow: var(--shadow);
-  padding: 0.7rem;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: none;
+  padding: 0;
 }
 
 .page-intro-compact h1 {
@@ -629,10 +621,10 @@ h3 {
 }
 
 .facts-card {
-  background: var(--paper-light);
+  background: transparent;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow: none;
   padding: 0 var(--space-5);
 }
 
