@@ -1,7 +1,10 @@
-# Oliver Zhang — personal website
+# Oliver Zhang personal website
 
 The source for [zhango999.github.io](https://zhango999.github.io), built as a
 small static site with Astro, TypeScript, and plain CSS.
+
+Edit: The reason why I chose Astro was mainly because I wanted a markdown centric way to 
+easily add new pages and edits to my website.
 
 ## Local development
 
