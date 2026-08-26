@@ -26,6 +26,9 @@ Set `featured: true` to include it on the homepage.
 Page copy lives in `src/pages/`, shared components in `src/components/`, and the
 visual system in `src/styles/global.css`.
 
+More notes: 
+https://app.notion.com/p/ozzzhang/Personal-Website-Notes-3c48aa426b4a80989b42dbc84703ddad
+
 ## Deployment
 
 Every push to `main` runs the production build and deploys `dist/` through

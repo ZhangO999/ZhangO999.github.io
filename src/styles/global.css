@@ -389,6 +389,38 @@ kbd {
 }
 
 /* ── Misc ── */
+.misc-facts {
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  margin: 0 0 var(--space-6);
+}
+
+.misc-facts > div {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 6rem minmax(0, 1fr);
+  padding: 0.7rem 0;
+}
+
+.misc-facts > div + div {
+  border-top: 1px solid var(--line);
+}
+
+.misc-facts dt {
+  color: var(--ink-muted);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.misc-facts dd {
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
 .misc-grid {
   display: grid;
   gap: var(--space-4);
@@ -428,11 +460,77 @@ kbd {
   gap: var(--space-2);
 }
 
+.misc-image-button {
+  appearance: none;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: zoom-in;
+  display: block;
+  padding: 0;
+}
+
 .misc-shots img {
   border: 1px solid var(--line);
   height: 5.5rem;
   object-fit: cover;
+  transition: transform 150ms ease;
   width: auto;
+}
+
+.misc-image-button:hover img {
+  transform: translateY(-2px);
+}
+
+.misc-lightbox {
+  background: transparent;
+  border: 0;
+  max-height: 94vh;
+  max-width: 94vw;
+  overflow: visible;
+  padding: 0;
+}
+
+.misc-lightbox::backdrop {
+  backdrop-filter: blur(2px);
+  background: rgb(20 23 24 / 72%);
+}
+
+.misc-lightbox-frame {
+  background: var(--paper-light);
+  border: 1px solid var(--ink);
+  padding: clamp(0.45rem, 1.5vw, 0.8rem);
+  position: relative;
+}
+
+.misc-lightbox-image {
+  display: block;
+  max-height: 86vh;
+  max-width: min(88vw, 75rem);
+  object-fit: contain;
+}
+
+.misc-lightbox-close {
+  align-items: center;
+  appearance: none;
+  background: var(--paper-light);
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  font: 700 1rem/1 var(--mono);
+  height: 2rem;
+  justify-content: center;
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  width: 2rem;
+  z-index: 1;
+}
+
+.misc-lightbox-close:hover {
+  background: var(--ink);
+  color: var(--paper-light);
 }
 
 .section-break {
@@ -607,8 +705,8 @@ kbd {
 }
 
 .footer-zen {
-  --ground-offset: clamp(1.35rem, 2vw, 1.75rem);
-
+  --ground-offset: clamp(4rem, 4vw, 4rem);
+  
   background-image: url("/footer-pencil-ground.webp");
   background-position: center calc(100% - var(--ground-offset));
   background-repeat: repeat-x;
@@ -630,8 +728,8 @@ kbd {
 }
 
 .footer-bonsai {
-  --ground-burial: 0.3rem;
-  left: 68%;
+  --ground-burial: 3rem;
+  left: 63%;
   transform: translateX(-50%);
   width: clamp(5.8rem, 8vw, 7.5rem);
 }
@@ -644,36 +742,78 @@ kbd {
 }
 
 .footer-flower--left {
-  --ground-burial: 0.72rem;
-  animation-delay: -1.7s;
-  left: 21%;
+  --ground-burial: 0.0rem;
+  left: 15%;
 }
 
 .footer-iris {
-  width: clamp(1.55rem, 2.2vw, 2.1rem);
+  width: clamp(1rem, 1.4vw, 1.3rem);
 }
 
 .footer-flower--right {
-  --ground-burial: 0.46rem;
-  animation-delay: -4.1s;
-  animation-duration: 5.2s;
+  --ground-burial: 0.12rem;
+  left: 27%;
   right: 13%;
   width: clamp(1.1rem, 1.55vw, 1.45rem);
 }
 
+.footer-flower--four-petal {
+  --ground-burial: 0.5rem;
+  left: 85%;
+  width: clamp(1.05rem, 1.45vw, 1.35rem);
+}
+
+.footer-flower--four-petal-left {
+  --ground-burial: 1.5rem;
+  left: 49.5%;
+  scale: -1 1;
+  width: clamp(0.9rem, 1.25vw, 1.15rem);
+}
+
 .footer-stone--left {
   left: 7%;
-  width: clamp(0.9rem, 1.4vw, 1.2rem);
+  width: clamp(0.95rem, 1.4vw, 1.2rem);
+  --ground-burial: 0.0rem;
+
+}
+
+.footer-stone--mid-left {
+  left: 33%;
+  width: clamp(1rem, 1.1vw, 1rem);
+    --ground-burial: 0.0rem;
+
 }
 
 .footer-grass {
   left: 43%;
   width: clamp(0.75rem, 1.2vw, 1rem);
+  --ground-burial: 0.0rem;  
 }
 
 .footer-stone--right {
-  right: 7%;
+  right: 8%;
   width: clamp(0.85rem, 1.3vw, 1.1rem);
+  --ground-burial: 0.0rem;
+
+}
+
+.footer-stone--cluster {
+  --ground-burial: 1.5rem;
+  left: 20%;
+  width: clamp(1.5rem, 2.25vw, 2.15rem);
+}
+
+.footer-stone--cluster--right {
+  --ground-burial: 2.1rem;
+  right: 20%;
+  width: clamp(1.5rem, 2.25vw, 2.15rem);
+}
+
+.footer-stone--far-right {
+  right: 25%;
+  width: clamp(1rem, 1.3vw, 1.2rem);
+  --ground-burial: 0.0rem;
+
 }
 
 @keyframes footer-flower-sway {

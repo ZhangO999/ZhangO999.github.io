@@ -19,16 +19,18 @@ const projects = (await getCollection('projects'))
     <div class="hero-copy">
       <h1>Oliver Zhang</h1>
       <p class="hero-lede">
-        Computer science and maths at the University of Sydney. I like systems,
-        databases, and problems where “correct” has an actual definition.
+Building software and technologies to solve real-world problems. 
+Focused on clean code, scalable architecture, and delivering value. 
       </p>
       <p class="hero-now">
-        Currently a research assistant in USYD’s Database Research Group, measuring
-        what bounded retries cost across PostgreSQL isolation levels. Before that,
-        machine-checked proofs for the seL4 microkernel at UNSW Trustworthy Systems.
+        Currently an applied computer vision honours student at The University of Sydney. 
+        <br><br>
+        Have previously done software work and research on high contention transactional systems
+        in USyd's Database Research Group under Professor Alan Fekete. 
+        <br><br>
+        Before that, interned at the UNSW Trustworthy System's Group, working on seL4 Microkernel.
       </p>
       <ul class="hero-links" aria-label="Key links">
-        <li><a href="#projects">projects</a></li>
         <li><a href="https://github.com/ZhangO999">github</a></li>
         <li><a href="https://www.linkedin.com/in/oliver-zhang3">linkedin</a></li>
         <li><a href="mailto:ozha8307@uni.sydney.edu.au">email</a></li>
@@ -53,7 +55,7 @@ const projects = (await getCollection('projects'))
   <section class="content-section section-anchor" id="projects" aria-labelledby="projects-heading">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">Research, systems, and small experiments</p>
+        <p class="eyebrow">SOME THINGS I'VE WORKED ON</p>
         <h2 id="projects-heading">Projects</h2>
       </div>
     </div>
@@ -73,29 +75,55 @@ const projects = (await getCollection('projects'))
       </div>
     </div>
 
-    <ul class="misc-grid">
-      <li class="misc-card">
-        <p class="misc-title">MBTI</p>
-        <p class="misc-caption">INTJ, apparently.</p>
-      </li>
+    <dl class="misc-facts">
+      <div>
+        <dt>MBTI</dt>
+        <dd>INTJ, apparently.</dd>
+      </div>
+      <div>
+        <dt>Desktop</dt>
+        <dd>Ryzen 5 5600 (AM4) · RTX 5060 · 16 GB RAM · Omarchy (Arch btw)</dd>
+      </div>
+      <div>
+        <dt>Laptop</dt>
+        <dd>14-inch MacBook Pro · M1 Max · 64 GB RAM</dd>
+      </div>
+    </dl>
 
+    <ul class="misc-grid">
       <li class="misc-card">
         <p class="misc-title">Badminton</p>
         <div class="misc-shots">
-          <Image
-            src={badmintonPlaying}
-            alt="Oliver mid-jump playing a smash on a badminton court"
-            widths={[208, 416]}
-            sizes="70px"
-            loading="lazy"
-          />
-          <Image
-            src={badmintonMedal}
-            alt="Oliver wearing a medal after a badminton tournament"
-            widths={[183, 366]}
-            sizes="66px"
-            loading="lazy"
-          />
+          <button
+            class="misc-image-button"
+            type="button"
+            data-lightbox-src={badmintonPlaying.src}
+            data-lightbox-alt="Oliver mid-jump playing a smash on a badminton court"
+            aria-label="View the badminton action photo at full size"
+          >
+            <Image
+              src={badmintonPlaying}
+              alt="Oliver mid-jump playing a smash on a badminton court"
+              widths={[208, 416]}
+              sizes="70px"
+              loading="lazy"
+            />
+          </button>
+          <button
+            class="misc-image-button"
+            type="button"
+            data-lightbox-src={badmintonMedal.src}
+            data-lightbox-alt="Oliver wearing a medal after a badminton tournament"
+            aria-label="View the badminton medal photo at full size"
+          >
+            <Image
+              src={badmintonMedal}
+              alt="Oliver wearing a medal after a badminton tournament"
+              widths={[183, 366]}
+              sizes="66px"
+              loading="lazy"
+            />
+          </button>
         </div>
         <p class="misc-caption">On and off for ~10 years.</p>
       </li>
@@ -103,30 +131,90 @@ const projects = (await getCollection('projects'))
       <li class="misc-card">
         <p class="misc-title">Best travel photo</p>
         <div class="misc-shots">
-          <Image
-            src={tekapo}
-            alt="The Church of the Good Shepherd beside Lake Tekapo at sunset"
-            widths={[240, 480, 720]}
-            sizes="180px"
-            loading="lazy"
-          />
+          <button
+            class="misc-image-button"
+            type="button"
+            data-lightbox-src={tekapo.src}
+            data-lightbox-alt="The Church of the Good Shepherd beside Lake Tekapo at sunset"
+            aria-label="View the Lake Tekapo photo at full size"
+          >
+            <Image
+              src={tekapo}
+              alt="The Church of the Good Shepherd beside Lake Tekapo at sunset"
+              widths={[240, 480, 720]}
+              sizes="180px"
+              loading="lazy"
+            />
+          </button>
         </div>
-        <p class="misc-caption">Church of the Good Shepherd, Lake Tekapo.</p>
+        <p class="misc-caption">
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Church+of+the+Good+Shepherd+Lake+Tekapo"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Church of the Good Shepherd
+          </a>, Lake Tekapo, New Zealand.
+  
+        </p>
       </li>
 
       <li class="misc-card">
-        <p class="misc-title">Drawing</p>
+        <p class="misc-title">Art</p>
         <div class="misc-shots">
-          <Image
-            src={corgiSketch}
-            alt="Graphite sketch of a corgi's head"
-            widths={[170, 340, 512]}
-            sizes="70px"
-            loading="lazy"
-          />
+          <button
+            class="misc-image-button"
+            type="button"
+            data-lightbox-src={corgiSketch.src}
+            data-lightbox-alt="Graphite sketch of a corgi's head"
+            aria-label="View the corgi drawing at full size"
+          >
+            <Image
+              src={corgiSketch}
+              alt="Graphite sketch of a corgi's head"
+              widths={[170, 340, 512]}
+              sizes="70px"
+              loading="lazy"
+            />
+          </button>
         </div>
-        <p class="misc-caption">Graphite, mostly animals. Should do it more.</p>
+        <p class="misc-caption">Graphite, mostly animals. Should probably be drawing more...once I'm less busy...</p>
+
       </li>
     </ul>
+
+    <dialog class="misc-lightbox" aria-label="Expanded image">
+      <div class="misc-lightbox-frame">
+        <button class="misc-lightbox-close" type="button" aria-label="Close image">×</button>
+        <img class="misc-lightbox-image" alt="" />
+      </div>
+    </dialog>
   </section>
+
+  <script>
+    const lightbox = document.querySelector<HTMLDialogElement>('.misc-lightbox');
+    const lightboxImage = lightbox?.querySelector<HTMLImageElement>('.misc-lightbox-image');
+    const closeButton = lightbox?.querySelector<HTMLButtonElement>('.misc-lightbox-close');
+
+    document.querySelectorAll<HTMLButtonElement>('[data-lightbox-src]').forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        if (!lightbox || !lightboxImage) return;
+
+        lightboxImage.src = trigger.dataset.lightboxSrc ?? '';
+        lightboxImage.alt = trigger.dataset.lightboxAlt ?? '';
+        lightbox.showModal();
+        closeButton?.focus();
+      });
+    });
+
+    closeButton?.addEventListener('click', () => lightbox?.close());
+
+    lightbox?.addEventListener('click', (event) => {
+      if (event.target === lightbox) lightbox.close();
+    });
+
+    lightbox?.addEventListener('close', () => {
+      lightboxImage?.removeAttribute('src');
+    });
+  </script>
 </BaseLayout>
