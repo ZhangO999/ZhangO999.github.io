@@ -3,15 +3,23 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <img
-    class="footer-art"
-    src="/footer-cat-lab.webp"
-    alt=""
-    width="1600"
-    height="296"
-    loading="lazy"
-    decoding="async"
-  />
+  <picture class="footer-picture">
+    <source
+      media="(max-width: 600px)"
+      srcset="/footer-cat-lab-mobile.webp"
+      width="800"
+      height="373"
+    />
+    <img
+      class="footer-art"
+      src="/footer-cat-lab.webp"
+      alt=""
+      width="1600"
+      height="343"
+      loading="lazy"
+      decoding="async"
+    />
+  </picture>
   <div class="footer-meta">
     <p>© {year} Oliver Zhang</p>
     <div class="footer-links" aria-label="Social links">
