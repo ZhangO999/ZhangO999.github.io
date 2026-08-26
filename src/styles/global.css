@@ -635,7 +635,7 @@ kbd {
 }
 
 .footer-flower {
-  animation: footer-flower-sway 5.8s ease-in-out infinite;
+  animation: footer-flower-sway 4.5s ease-in-out infinite;
   transform-origin: 50% 100%;
   will-change: transform;
   width: clamp(1.25rem, 1.8vw, 1.7rem);
@@ -652,7 +652,7 @@ kbd {
 
 .footer-flower--right {
   animation-delay: -4.1s;
-  animation-duration: 6.6s;
+  animation-duration: 5.2s;
   right: 13%;
 }
 
@@ -672,8 +672,8 @@ kbd {
 }
 
 @keyframes footer-flower-sway {
-  0%, 100% { transform: rotate(-0.8deg); }
-  50% { transform: rotate(1.2deg); }
+  0%, 100% { transform: rotate(-2.5deg); }
+  50% { transform: rotate(3deg); }
 }
 
 @media (max-width: 760px) {
@@ -757,10 +757,10 @@ kbd {
   }
 
   .footer-flower {
-    animation-duration: 5.8s !important;
+    animation-duration: 4.5s !important;
   }
 
   .footer-flower--right {
-    animation-duration: 6.6s !important;
+    animation-duration: 5.2s !important;
   }
 }
