@@ -679,39 +679,16 @@ kbd {
 }
 
 .site-footer {
-  font-size: 0.7rem;
   margin-top: clamp(5rem, 12vw, 9rem);
 }
 
 .footer-meadow {
-  background-image: url("/footer-flora-tile.webp");
+  background-image: url("/footer-flora-line.webp");
   background-position: center bottom;
   background-repeat: repeat-x;
-  background-size: 543px 110px;
-  border-bottom: 1px solid var(--ink);
-  height: 7.5rem;
+  background-size: 543px 80px;
+  height: 6rem;
   margin-inline: calc(50% - 50vw);
-}
-
-.footer-meta {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 1.05rem 0 2.5rem;
-}
-
-.footer-meta p {
-  margin: 0;
-}
-
-.footer-links {
-  display: flex;
-  gap: var(--space-4);
-}
-
-.footer-links a {
-  color: var(--ink-soft);
-  text-underline-offset: 0.25em;
 }
 
 @media (max-width: 760px) {
@@ -778,17 +755,12 @@ kbd {
     font-size: 0.9rem;
   }
 
-  .section-heading,
-  .footer-meta {
+  .section-heading {
     align-items: flex-start;
     flex-direction: column;
   }
 
   .section-heading {
-    gap: var(--space-2);
-  }
-
-  .footer-meta {
     gap: var(--space-2);
   }
 
