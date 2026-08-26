@@ -607,18 +607,21 @@ kbd {
 }
 
 .footer-zen {
-  background-image: url("/footer-pencil-line.webp");
-  background-position: center bottom;
+  --ground-offset: clamp(1.35rem, 2vw, 1.75rem);
+
+  background-image: url("/footer-pencil-ground.webp");
+  background-position: center calc(100% - var(--ground-offset));
   background-repeat: repeat-x;
-  background-size: 350px 20px;
+  background-size: 350px 10px;
   height: clamp(8rem, 11vw, 9.5rem);
   overflow: hidden;
   position: relative;
 }
 
 .footer-bonsai,
-.footer-flower {
-  bottom: 0.65rem;
+.footer-flower,
+.footer-detail {
+  bottom: calc(var(--ground-offset) - 0.12rem);
   height: auto;
   pointer-events: none;
   position: absolute;
@@ -634,6 +637,7 @@ kbd {
 .footer-flower {
   animation: footer-flower-sway 5.8s ease-in-out infinite;
   transform-origin: 50% 100%;
+  will-change: transform;
   width: clamp(1.25rem, 1.8vw, 1.7rem);
 }
 
@@ -650,6 +654,21 @@ kbd {
   animation-delay: -4.1s;
   animation-duration: 6.6s;
   right: 13%;
+}
+
+.footer-stone--left {
+  left: 7%;
+  width: clamp(0.9rem, 1.4vw, 1.2rem);
+}
+
+.footer-grass {
+  left: 43%;
+  width: clamp(0.75rem, 1.2vw, 1rem);
+}
+
+.footer-stone--right {
+  right: 7%;
+  width: clamp(0.85rem, 1.3vw, 1.1rem);
 }
 
 @keyframes footer-flower-sway {
@@ -738,7 +757,10 @@ kbd {
   }
 
   .footer-flower {
-    animation: none;
-    transform: none;
+    animation-duration: 5.8s !important;
+  }
+
+  .footer-flower--right {
+    animation-duration: 6.6s !important;
   }
 }
