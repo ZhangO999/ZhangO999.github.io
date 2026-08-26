@@ -3,10 +3,9 @@ import HeaderMascot from './HeaderMascot.astro';
 
 const isHome = Astro.url.pathname === '/';
 const navItems = [
-  { label: 'Home', section: 'top' },
-  { label: 'Projects', section: 'projects' },
-  { label: 'Notes', section: 'notes' },
   { label: 'About', section: 'about' },
+  { label: 'Projects', section: 'projects' },
+  { label: 'Misc', section: 'misc' },
 ];
 
 const sectionHref = (section: string) => `${isHome ? '' : '/'}#${section}`;
@@ -15,7 +14,7 @@ const sectionHref = (section: string) => `${isHome ? '' : '/'}#${section}`;
 <header class="site-header">
   <div class="brand-cluster">
     <HeaderMascot />
-    <a class="brand" href={sectionHref('top')} aria-label="Oliver Zhang, home">
+    <a class="brand" href={sectionHref('about')} aria-label="Oliver Zhang, home">
       <span class="brand-label">oliverzhang</span>
     </a>
   </div>
@@ -36,10 +35,9 @@ const sectionHref = (section: string) => `${isHome ? '' : '/'}#${section}`;
             <span class="shortcut-label">keys</span>
           </summary>
           <div class="shortcut-panel">
-            <p><kbd>g</kbd> <kbd>g</kbd> home</p>
-            <p><kbd>g</kbd> <kbd>p</kbd> projects</p>
-            <p><kbd>g</kbd> <kbd>n</kbd> notes</p>
             <p><kbd>g</kbd> <kbd>a</kbd> about</p>
+            <p><kbd>g</kbd> <kbd>p</kbd> projects</p>
+            <p><kbd>g</kbd> <kbd>m</kbd> misc</p>
             <p><kbd>j</kbd> / <kbd>k</kbd> next / previous</p>
           </div>
         </details>
@@ -49,7 +47,7 @@ const sectionHref = (section: string) => `${isHome ? '' : '/'}#${section}`;
 </header>
 
 <script>
-  const sectionIds = ['top', 'projects', 'notes', 'about'];
+  const sectionIds = ['about', 'projects', 'misc'];
   const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-section]'));
   const sections = sectionIds
     .map((id) => document.getElementById(id))
@@ -67,7 +65,7 @@ const sectionHref = (section: string) => `${isHome ? '' : '/'}#${section}`;
 
   const activeSection = () => {
     const marker = window.scrollY + Math.min(window.innerHeight * 0.32, 240);
-    let active = sections[0]?.id ?? 'top';
+    let active = sections[0]?.id ?? 'about';
 
     for (const section of sections) {
       if (section.offsetTop <= marker) active = section.id;
@@ -101,10 +99,9 @@ const sectionHref = (section: string) => `${isHome ? '' : '/'}#${section}`;
 
     const key = event.key.toLowerCase();
     const destination: Record<string, string> = {
-      g: 'top',
-      p: 'projects',
-      n: 'notes',
       a: 'about',
+      p: 'projects',
+      m: 'misc',
     };
 
     if (waitingForDestination && destination[key]) {
