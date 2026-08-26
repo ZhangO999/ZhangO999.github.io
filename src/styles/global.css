@@ -621,7 +621,8 @@ kbd {
 .footer-bonsai,
 .footer-flower,
 .footer-detail {
-  bottom: calc(var(--ground-offset) - 0.12rem);
+  --ground-burial: 0.12rem;
+  bottom: calc(var(--ground-offset) - var(--ground-burial));
   height: auto;
   pointer-events: none;
   position: absolute;
@@ -629,6 +630,7 @@ kbd {
 }
 
 .footer-bonsai {
+  --ground-burial: 0.3rem;
   left: 68%;
   transform: translateX(-50%);
   width: clamp(5.8rem, 8vw, 7.5rem);
@@ -642,18 +644,21 @@ kbd {
 }
 
 .footer-flower--left {
+  --ground-burial: 0.72rem;
   animation-delay: -1.7s;
   left: 21%;
 }
 
 .footer-iris {
-  width: clamp(1.35rem, 2vw, 1.9rem);
+  width: clamp(1.55rem, 2.2vw, 2.1rem);
 }
 
 .footer-flower--right {
+  --ground-burial: 0.46rem;
   animation-delay: -4.1s;
   animation-duration: 5.2s;
   right: 13%;
+  width: clamp(1.1rem, 1.55vw, 1.45rem);
 }
 
 .footer-stone--left {
