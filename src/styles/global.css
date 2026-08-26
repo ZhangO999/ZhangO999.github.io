@@ -683,18 +683,18 @@ kbd {
   margin-top: clamp(5rem, 12vw, 9rem);
 }
 
-.footer-picture {
-  display: block;
-}
-
-.footer-art {
-  height: auto;
-  width: 100%;
+.footer-meadow {
+  background-image: url("/footer-flora-tile.webp");
+  background-position: center bottom;
+  background-repeat: repeat-x;
+  background-size: 543px 110px;
+  border-bottom: 1px solid var(--ink);
+  height: 7.5rem;
+  margin-inline: calc(50% - 50vw);
 }
 
 .footer-meta {
   align-items: center;
-  border-top: 1px solid var(--ink);
   display: flex;
   justify-content: space-between;
   padding: 1.05rem 0 2.5rem;
