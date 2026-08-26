@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://zhango999.github.io',
+  site: 'https://oliverzhang.nz',
   output: 'static',
   integrations: [sitemap()],
   build: {
