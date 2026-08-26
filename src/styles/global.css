@@ -683,10 +683,10 @@ kbd {
 }
 
 .footer-zen {
-  background-image: url("/footer-zen-line.webp");
+  background-image: url("/footer-pencil-line.webp");
   background-position: center bottom;
   background-repeat: repeat-x;
-  background-size: 543px 55px;
+  background-size: 350px 20px;
   height: clamp(8rem, 11vw, 9.5rem);
   overflow: hidden;
   position: relative;
@@ -694,7 +694,7 @@ kbd {
 
 .footer-bonsai,
 .footer-flower {
-  bottom: 0.15rem;
+  bottom: 0.65rem;
   height: auto;
   pointer-events: none;
   position: absolute;
@@ -716,6 +716,10 @@ kbd {
 .footer-flower--left {
   animation-delay: -1.7s;
   left: 21%;
+}
+
+.footer-iris {
+  width: clamp(1.35rem, 2vw, 1.9rem);
 }
 
 .footer-flower--right {
