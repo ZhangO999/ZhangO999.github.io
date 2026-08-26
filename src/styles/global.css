@@ -688,7 +688,6 @@ kbd {
   background-repeat: repeat-x;
   background-size: 543px 55px;
   height: clamp(8rem, 11vw, 9.5rem);
-  margin-inline: calc(50% - 50vw);
   overflow: hidden;
   position: relative;
 }
@@ -696,6 +695,7 @@ kbd {
 .footer-bonsai,
 .footer-flower {
   bottom: 0.15rem;
+  height: auto;
   pointer-events: none;
   position: absolute;
   user-select: none;
@@ -720,6 +720,7 @@ kbd {
 
 .footer-flower--right {
   animation-delay: -4.1s;
+  animation-duration: 6.6s;
   right: 13%;
 }
 
@@ -836,4 +837,8 @@ kbd {
     transform: none;
   }
 
+  .footer-flower {
+    animation: none;
+    transform: none;
+  }
 }
