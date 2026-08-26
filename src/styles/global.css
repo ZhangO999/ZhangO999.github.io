@@ -682,13 +682,50 @@ kbd {
   margin-top: clamp(5rem, 12vw, 9rem);
 }
 
-.footer-meadow {
-  background-image: url("/footer-flora-line.webp");
+.footer-zen {
+  background-image: url("/footer-zen-line.webp");
   background-position: center bottom;
   background-repeat: repeat-x;
-  background-size: 543px 80px;
-  height: 6rem;
+  background-size: 543px 55px;
+  height: clamp(8rem, 11vw, 9.5rem);
   margin-inline: calc(50% - 50vw);
+  overflow: hidden;
+  position: relative;
+}
+
+.footer-bonsai,
+.footer-flower {
+  bottom: 0.15rem;
+  pointer-events: none;
+  position: absolute;
+  user-select: none;
+}
+
+.footer-bonsai {
+  left: 68%;
+  transform: translateX(-50%);
+  width: clamp(5.8rem, 8vw, 7.5rem);
+}
+
+.footer-flower {
+  animation: footer-flower-sway 5.8s ease-in-out infinite;
+  transform-origin: 50% 100%;
+  width: clamp(1.25rem, 1.8vw, 1.7rem);
+}
+
+.footer-flower--left {
+  animation-delay: -1.7s;
+  left: 21%;
+}
+
+.footer-flower--right {
+  animation-delay: -4.1s;
+  right: 13%;
+}
+
+@keyframes footer-flower-sway {
+  0%, 100% { transform: rotate(-0.8deg); }
+  50% { transform: rotate(1.2deg); }
 }
 
 @media (max-width: 760px) {
