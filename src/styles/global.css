@@ -705,26 +705,28 @@ kbd {
   width: 100%;
 }
 
-.segfault-message {
+.segfault-label {
   background: var(--ink);
   color: var(--paper-light);
-  font-size: 0.62rem;
+  font-size: clamp(0.58rem, 1.1vw, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
   left: 50%;
-  opacity: 0;
-  padding: 0.18rem 0.4rem;
+  padding: 0.2rem 0.48rem;
   pointer-events: none;
   position: absolute;
-  top: 56%;
-  transform: translate(-50%, -50%);
+  top: 79%;
+  transform: translate(-50%, -50%) rotate(-4deg);
   white-space: nowrap;
+  z-index: 2;
 }
 
 .footer-scene.is-faulting .footer-art {
   animation: footer-fault 760ms steps(1, end) both;
 }
 
-.footer-scene.is-faulting .segfault-message {
-  animation: fault-message 760ms steps(1, end) both;
+.footer-scene.is-faulting .segfault-label {
+  animation: fault-label 760ms steps(1, end) both;
 }
 
 @keyframes footer-fault {
@@ -736,9 +738,10 @@ kbd {
   60% { clip-path: inset(0); transform: translateX(1px); }
 }
 
-@keyframes fault-message {
-  0%, 18%, 100% { opacity: 0; }
-  19%, 72% { opacity: 1; }
+@keyframes fault-label {
+  0%, 12%, 72%, 100% { opacity: 1; transform: translate(-50%, -50%) rotate(-4deg); }
+  13%, 36% { opacity: 0; transform: translate(calc(-50% + 5px), -50%) rotate(-2deg); }
+  24%, 48% { opacity: 1; transform: translate(calc(-50% - 4px), -50%) rotate(-6deg); }
 }
 
 .footer-meta {
@@ -819,6 +822,11 @@ kbd {
   .about-avatar {
     width: 125px;
   }
+
+  .segfault-label {
+    left: 52%;
+    top: 69%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -879,7 +887,7 @@ kbd {
     animation: none;
   }
 
-  .footer-scene.is-faulting .segfault-message {
+  .footer-scene.is-faulting .segfault-label {
     animation: none;
     opacity: 1;
   }

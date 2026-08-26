@@ -3,25 +3,25 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <button class="footer-scene" type="button" aria-label="Poke the footer cat">
+  <button class="footer-scene" type="button" aria-label="Replay the footer cat's seg-fault">
     <picture class="footer-picture">
       <source
         media="(max-width: 600px)"
         srcset="/footer-cat-lab-mobile.webp"
         width="800"
-        height="342"
+        height="415"
       />
       <img
         class="footer-art"
         src="/footer-cat-lab.webp"
         alt=""
         width="1600"
-        height="466"
+        height="469"
         loading="lazy"
         decoding="async"
       />
     </picture>
-    <span class="segfault-message" aria-live="polite"></span>
+    <span class="segfault-label" aria-hidden="true">SEG-FAULT</span>
   </button>
   <div class="footer-meta">
     <p>© {year} Oliver Zhang</p>
@@ -35,7 +35,6 @@ const year = new Date().getFullYear();
 
 <script>
   const scene = document.querySelector<HTMLButtonElement>('.footer-scene');
-  const message = scene?.querySelector<HTMLElement>('.segfault-message');
   let faultTimer: number | undefined;
 
   scene?.addEventListener('click', () => {
@@ -43,11 +42,9 @@ const year = new Date().getFullYear();
     scene.classList.remove('is-faulting');
     void scene.offsetWidth;
     scene.classList.add('is-faulting');
-    if (message) message.textContent = 'segmentation fault';
 
     faultTimer = window.setTimeout(() => {
       scene.classList.remove('is-faulting');
-      if (message) message.textContent = '';
     }, 900);
   });
 </script>
