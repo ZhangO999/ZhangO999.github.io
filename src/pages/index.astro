@@ -3,6 +3,8 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import portrait from '../assets/oliver-portrait.jpg';
 import badmintonMedal from '../assets/badminton-medal.jpg';
+import badmintonPlaying from '../assets/badminton-playing.jpg';
+import corgiSketch from '../assets/corgi-sketch.jpg';
 import tekapo from '../assets/tekapo.jpg';
 import SectionBreak from '../components/SectionBreak.astro';
 import ProjectRow from '../components/ProjectRow.astro';
@@ -81,10 +83,17 @@ const projects = (await getCollection('projects'))
         <p class="misc-title">Badminton</p>
         <div class="misc-shots">
           <Image
+            src={badmintonPlaying}
+            alt="Oliver mid-jump playing a smash on a badminton court"
+            widths={[208, 416]}
+            sizes="70px"
+            loading="lazy"
+          />
+          <Image
             src={badmintonMedal}
             alt="Oliver wearing a medal after a badminton tournament"
             widths={[183, 366]}
-            sizes="88px"
+            sizes="66px"
             loading="lazy"
           />
         </div>
@@ -107,6 +116,15 @@ const projects = (await getCollection('projects'))
 
       <li class="misc-card">
         <p class="misc-title">Drawing</p>
+        <div class="misc-shots">
+          <Image
+            src={corgiSketch}
+            alt="Graphite sketch of a corgi's head"
+            widths={[170, 340, 512]}
+            sizes="70px"
+            loading="lazy"
+          />
+        </div>
         <p class="misc-caption">Graphite, mostly animals. Should do it more.</p>
       </li>
     </ul>
