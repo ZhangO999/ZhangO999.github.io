@@ -1,22 +1,21 @@
 ---
 import HeaderMascot from './HeaderMascot.astro';
 
-const path = Astro.url.pathname;
+const isHome = Astro.url.pathname === '/';
 const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/work/', label: 'Projects' },
-  { href: '/notes/', label: 'Notes' },
-  { href: '/about/', label: 'About' },
+  { label: 'Home', section: 'top' },
+  { label: 'Projects', section: 'projects' },
+  { label: 'Notes', section: 'notes' },
+  { label: 'About', section: 'about' },
 ];
 
-const isActive = (href: string) =>
-  href === '/' ? path === '/' : path.startsWith(href);
+const sectionHref = (section: string) => `${isHome ? '' : '/'}#${section}`;
 ---
 
 <header class="site-header">
   <div class="brand-cluster">
     <HeaderMascot />
-    <a class="brand" href="/" aria-label="Oliver Zhang, home">
+    <a class="brand" href={sectionHref('top')} aria-label="Oliver Zhang, home">
       <span class="brand-label">oliverzhang</span>
     </a>
   </div>
@@ -25,11 +24,117 @@ const isActive = (href: string) =>
     <ul>
       {navItems.map((item) => (
         <li>
-          <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+          <a href={sectionHref(item.section)} data-section={item.section}>
             {item.label}
           </a>
         </li>
       ))}
+      <li>
+        <details class="shortcut-help">
+          <summary>keys</summary>
+          <div class="shortcut-panel">
+            <p><kbd>g</kbd> <kbd>g</kbd> home</p>
+            <p><kbd>g</kbd> <kbd>p</kbd> projects</p>
+            <p><kbd>g</kbd> <kbd>n</kbd> notes</p>
+            <p><kbd>g</kbd> <kbd>a</kbd> about</p>
+            <p><kbd>j</kbd> / <kbd>k</kbd> next / previous</p>
+          </div>
+        </details>
+      </li>
     </ul>
   </nav>
 </header>
+
+<script>
+  const sectionIds = ['top', 'projects', 'notes', 'about'];
+  const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-section]'));
+  const sections = sectionIds
+    .map((id) => document.getElementById(id))
+    .filter((section): section is HTMLElement => section !== null);
+  const shortcutHelp = document.querySelector<HTMLDetailsElement>('.shortcut-help');
+  let waitingForDestination = false;
+  let sequenceTimer: number | undefined;
+
+  const jumpTo = (id: string) => {
+    const section = document.getElementById(id);
+    if (!section) return;
+    section.scrollIntoView();
+    window.history.replaceState(null, '', `#${id}`);
+  };
+
+  const activeSection = () => {
+    const marker = window.scrollY + Math.min(window.innerHeight * 0.32, 240);
+    let active = sections[0]?.id ?? 'top';
+
+    for (const section of sections) {
+      if (section.offsetTop <= marker) active = section.id;
+    }
+
+    return active;
+  };
+
+  const updateNavigation = () => {
+    const active = activeSection();
+    navLinks.forEach((link) => {
+      if (link.dataset.section === active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+
+  const jumpRelative = (direction: number) => {
+    const currentIndex = Math.max(0, sectionIds.indexOf(activeSection()));
+    const nextIndex = Math.min(sectionIds.length - 1, Math.max(0, currentIndex + direction));
+    jumpTo(sectionIds[nextIndex]);
+  };
+
+  document.addEventListener('keydown', (event) => {
+    const target = event.target as HTMLElement | null;
+    if (
+      event.metaKey ||
+      event.ctrlKey ||
+      event.altKey ||
+      target?.matches('input, textarea, select, [contenteditable="true"]')
+    ) return;
+
+    const key = event.key.toLowerCase();
+    const destination: Record<string, string> = {
+      g: 'top',
+      p: 'projects',
+      n: 'notes',
+      a: 'about',
+    };
+
+    if (waitingForDestination && destination[key]) {
+      event.preventDefault();
+      waitingForDestination = false;
+      window.clearTimeout(sequenceTimer);
+      jumpTo(destination[key]);
+      return;
+    }
+
+    waitingForDestination = key === 'g';
+    window.clearTimeout(sequenceTimer);
+    if (waitingForDestination) {
+      sequenceTimer = window.setTimeout(() => {
+        waitingForDestination = false;
+      }, 900);
+      return;
+    }
+
+    if (key === 'j' || key === 'k') {
+      event.preventDefault();
+      jumpRelative(key === 'j' ? 1 : -1);
+    } else if (key === '?') {
+      event.preventDefault();
+      if (shortcutHelp) shortcutHelp.open = !shortcutHelp.open;
+    }
+  });
+
+  let scrollFrame = 0;
+  window.addEventListener('scroll', () => {
+    window.cancelAnimationFrame(scrollFrame);
+    scrollFrame = window.requestAnimationFrame(updateNavigation);
+  }, { passive: true });
+
+  updateNavigation();
+</script>

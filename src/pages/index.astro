@@ -2,17 +2,17 @@
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import avatar from '../assets/oliver-cat.png';
+import Monogram from '../components/Monogram.astro';
 import SectionBreak from '../components/SectionBreak.astro';
 import ProjectRow from '../components/ProjectRow.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const projects = (await getCollection('projects'))
-  .filter((project) => project.data.featured)
   .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout>
-  <section class="hero section-pad">
+  <section class="hero section-pad section-anchor" id="top">
     <div class="hero-copy">
       <p class="eyebrow">Oliver Zhang / University of Sydney</p>
       <h1>Hi, I’m Oliver.</h1>
@@ -22,8 +22,8 @@ const projects = (await getCollection('projects'))
         understand.
       </p>
       <ul class="hero-links" aria-label="Key links">
-        <li><a href="/work/">projects</a></li>
-        <li><a href="/notes/">notes</a></li>
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#notes">notes</a></li>
         <li><a href="https://github.com/ZhangO999">github</a></li>
         <li><a href="mailto:ozha8307@uni.sydney.edu.au">email</a></li>
       </ul>
@@ -44,17 +44,99 @@ const projects = (await getCollection('projects'))
 
   <SectionBreak label="projects" />
 
-  <section class="content-section" aria-labelledby="selected-work">
+  <section class="content-section section-anchor" id="projects" aria-labelledby="projects-heading">
     <div class="section-heading">
       <div>
         <p class="eyebrow">Research, systems, and small experiments</p>
-        <h2 id="selected-work">Selected projects</h2>
+        <h2 id="projects-heading">Projects</h2>
       </div>
-      <a class="text-link" href="/work/">All projects <span aria-hidden="true">→</span></a>
     </div>
 
     <div class="project-list">
       {projects.map(({ data }) => <ProjectRow {...data} />)}
+    </div>
+  </section>
+
+  <div class="home-divider"><SectionBreak label="notes" /></div>
+
+  <section class="notes-section content-section section-anchor" id="notes" aria-labelledby="notes-heading">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Reading and research</p>
+        <h2 id="notes-heading">Notes</h2>
+      </div>
+    </div>
+
+    <div class="notes-grid">
+      <article class="reading-card">
+        <div class="book-spine" aria-hidden="true"><span>DDIA</span></div>
+        <div>
+          <p class="card-kicker">Currently reading</p>
+          <h3>Designing Data-Intensive Applications</h3>
+          <p class="byline">Martin Kleppmann</p>
+          <p>Notes on the trade-offs behind reliable, scalable, and maintainable data systems.</p>
+        </div>
+      </article>
+
+      <article class="note-entry">
+        <div class="note-icon"><Monogram /></div>
+        <div>
+          <p class="card-kicker">Research report · 2026</p>
+          <h3>The retry tax</h3>
+          <p>
+            What happens when PostgreSQL transaction retries are bounded instead
+            of hidden behind “retry until commit” assumptions.
+          </p>
+          <a class="text-link" href="https://github.com/ZhangO999/retry-tax-bench/blob/main/report/RetryTaxBench.pdf">
+            Read the report <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="home-divider"><SectionBreak label="about" /></div>
+
+  <section class="about-section content-section section-anchor" id="about" aria-labelledby="about-heading">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">A little more</p>
+        <h2 id="about-heading">About</h2>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <section aria-labelledby="working-on">
+        <p class="eyebrow">What I care about</p>
+        <h3 id="working-on">Software with understandable edges.</h3>
+        <p>
+          I’m an aspiring software engineer studying at the University of Sydney.
+          I’m especially drawn to systems, databases, developer tools, and projects
+          where the implementation teaches me something about the problem itself.
+        </p>
+        <p>
+          My recent work has included benchmarking PostgreSQL isolation policies,
+          building concurrent software in C, and revisiting an old Unity game with
+          a few more years of engineering judgement.
+        </p>
+      </section>
+
+      <aside class="facts-card" aria-label="Quick facts">
+        <dl>
+          <div><dt>Studying at</dt><dd>University of Sydney</dd></div>
+          <div><dt>Interested in</dt><dd>Systems, tools, databases</dd></div>
+          <div><dt>Recent work</dt><dd>PostgreSQL isolation and retries</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="site-note section-gap">
+      <p class="eyebrow">About this site</p>
+      <h3>Quiet, quick, and a little peculiar.</h3>
+      <p>
+        Built with Astro and plain CSS. The cat is based on my GitHub profile
+        illustration; everything else is deliberately restrained.
+      </p>
     </div>
   </section>
 </BaseLayout>
