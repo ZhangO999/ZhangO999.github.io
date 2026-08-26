@@ -31,7 +31,10 @@ const sectionHref = (section: string) => `${isHome ? '' : '/'}#${section}`;
       ))}
       <li>
         <details class="shortcut-help">
-          <summary>keys</summary>
+          <summary aria-label="Keyboard shortcuts">
+            <span class="mode-chip" aria-hidden="true">N</span>
+            <span class="shortcut-label">keys</span>
+          </summary>
           <div class="shortcut-panel">
             <p><kbd>g</kbd> <kbd>g</kbd> home</p>
             <p><kbd>g</kbd> <kbd>p</kbd> projects</p>

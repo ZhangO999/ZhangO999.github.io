@@ -212,21 +212,43 @@ h3 {
 }
 
 .shortcut-help summary {
-  color: var(--ink-muted);
+  align-items: stretch;
+  border: 1px solid var(--ink);
+  color: var(--ink);
   cursor: pointer;
+  display: inline-flex;
   font-size: 0.66rem;
+  line-height: 1;
   list-style: none;
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-underline-offset: 0.28em;
+  padding: 0;
 }
 
 .shortcut-help summary::-webkit-details-marker {
   display: none;
 }
 
-.shortcut-help[open] summary {
-  color: var(--ink);
+.mode-chip,
+.shortcut-label {
+  align-items: center;
+  display: inline-flex;
+  min-height: 1.4rem;
+}
+
+.mode-chip {
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 700;
+  justify-content: center;
+  min-width: 1.4rem;
+}
+
+.shortcut-label {
+  padding: 0 0.38rem;
+}
+
+.shortcut-help[open] .shortcut-label,
+.shortcut-help summary:hover .shortcut-label {
+  background: var(--paper-deep);
 }
 
 .shortcut-panel {
@@ -661,13 +683,62 @@ kbd {
   margin-top: clamp(5rem, 12vw, 9rem);
 }
 
+.footer-scene {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  font: inherit;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
 .footer-picture {
   display: block;
 }
 
 .footer-art {
   height: auto;
+  transform-origin: center bottom;
   width: 100%;
+}
+
+.segfault-message {
+  background: var(--ink);
+  color: var(--paper-light);
+  font-size: 0.62rem;
+  left: 50%;
+  opacity: 0;
+  padding: 0.18rem 0.4rem;
+  pointer-events: none;
+  position: absolute;
+  top: 56%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.footer-scene.is-faulting .footer-art {
+  animation: footer-fault 760ms steps(1, end) both;
+}
+
+.footer-scene.is-faulting .segfault-message {
+  animation: fault-message 760ms steps(1, end) both;
+}
+
+@keyframes footer-fault {
+  0%, 12%, 72%, 100% { clip-path: inset(0); transform: translate(0); }
+  13% { clip-path: inset(9% 0 61%); transform: translateX(5px); }
+  24% { clip-path: inset(47% 0 22%); transform: translateX(-4px); }
+  36% { clip-path: inset(25% 0 43%); transform: translateX(3px); }
+  48% { clip-path: inset(66% 0 7%); transform: translateX(-2px); }
+  60% { clip-path: inset(0); transform: translateX(1px); }
+}
+
+@keyframes fault-message {
+  0%, 18%, 100% { opacity: 0; }
+  19%, 72% { opacity: 1; }
 }
 
 .footer-meta {
@@ -802,5 +873,14 @@ kbd {
 
   .portrait-stage:hover .portrait {
     transform: none;
+  }
+
+  .footer-scene.is-faulting .footer-art {
+    animation: none;
+  }
+
+  .footer-scene.is-faulting .segfault-message {
+    animation: none;
+    opacity: 1;
   }
 }
