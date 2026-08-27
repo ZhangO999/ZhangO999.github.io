@@ -765,7 +765,7 @@ kbd {
 
 .footer-flower--four-petal-left {
   --ground-burial: 1.5rem;
-  left: 49.5%;
+  left: 40.5%;
   scale: -1 1;
   width: clamp(0.9rem, 1.25vw, 1.15rem);
 }
